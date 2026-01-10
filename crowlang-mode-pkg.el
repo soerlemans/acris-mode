@@ -3,4 +3,4 @@
   "Major mode for the Crowlang programming language."
   '((emacs "29.4"))
   :keywords '("languages" "crowlang")
-  :url "https://github.com/soerlemans/crowlang-mode.el")
+  :url "https://github.com/soerlemans/crowlang-mode")

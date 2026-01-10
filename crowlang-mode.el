@@ -61,6 +61,7 @@
 
        ;; Control Statements:
        "func"
+       "meth"
        "match"
        "if"
        "else"
@@ -74,7 +75,7 @@
 			 "interface"
 
 			 ;; Meta:
-       "declare"
+       "decl"
        "macro"
 
        ;; Jump:
@@ -150,6 +151,8 @@
 				("enum[ \t]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)" 1 font-lock-type-face)
 				("struct[ \t]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)" 1 font-lock-type-face)
 				("interface[ \t]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)" 1 font-lock-type-face)
+
+				("\\(let\\|var\\)[ \t]+\\([a-zA-Z_][a-zA-Z0-9_]*\\): \\([a-zA-Z_][a-zA-Z0-9_]*\\)" 3 font-lock-type-face)
 
 				;; Functions:
 				("func[ \t]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)" 1 font-lock-function-name-face)

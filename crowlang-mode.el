@@ -1,11 +1,11 @@
-;;; crowlang-mode.el --- Major mode for the Crow programming language.
+;;; anura-mode.el --- Major mode for the Crow programming language.
 ;; -*- coding: utf-8; lexical-binding: t -*-
 
 ;; Copyright (C) 2025  soerlemans
 
 ;; Author: soerlemans <https://github.com/soerlemans>
 ;; Keywords: languages crow
-;; URL: https://github.com/soerlemans/crowlang-mode
+;; URL: https://github.com/soerlemans/anura-mode
 ;;
 ;; This file is not part of GNU Emacs.
 
@@ -39,7 +39,7 @@
 (require 'generic-x)
 
 ;;; Variables:
-(setq crowlang--comments
+(setq anura--comments
       (list
        "//"
        '("/*" . "*/" )
@@ -47,7 +47,7 @@
       ;; "List of character sequences for detecting comments."
       )
 
-(setq crowlang--keywords
+(setq anura--keywords
       (list
        ;; Variables:
        "let"
@@ -84,10 +84,10 @@
        "defer"
        "return"
        )
-      ;; "List of keywords for crowlang."
+      ;; "List of keywords for anura."
       )
 
-(setq crowlang--font-lock-defaults
+(setq anura--font-lock-defaults
       '(
 				;; Types:
 				("\\<void\\>" . font-lock-type-face)
@@ -160,20 +160,20 @@
 				;; Variable names
 				("\\<[a-zA-Z_][a-zA-Z0-9_]*\\>" . font-lock-variable-name-face)
 				)
-      ;;  "List of font lock settings for crowlang."
+      ;;  "List of font lock settings for anura."
       )
 
 ;;; Functions:
-(defun crowlang--calculate-indentation ()
+(defun anura--calculate-indentation ()
   "Return the column to which the current line should be indented."
   (* tab-width (min (car (syntax-ppss (line-beginning-position)))
                     (car (syntax-ppss (line-end-position))))))
 
-(defun crowlang--indent-line ()
+(defun anura--indent-line ()
   "Indent current line of Crowlang code."
   (interactive)
   (let ((savep (> (current-column) (current-indentation)))
-        (indent (condition-case nil (max (crowlang--calculate-indentation) 0)
+        (indent (condition-case nil (max (anura--calculate-indentation) 0)
                   (error 0))))
     (if savep
 				(save-excursion (indent-line-to indent))
@@ -181,18 +181,18 @@
     ))
 
 ;;; Define generic mode:
-(define-generic-mode 'crowlang-mode
-  crowlang--comments           ; Comments.
-  crowlang--keywords           ; Keywords.
-  crowlang--font-lock-defaults ; Font-lock settings.
-  '("\\.cw$")                  ; Activate the mode only for crowlang source files.
+(define-generic-mode 'anura-mode
+  anura--comments           ; Comments.
+  anura--keywords           ; Keywords.
+  anura--font-lock-defaults ; Font-lock settings.
+  '("\\.cw$")                  ; Activate the mode only for anura source files.
   (list		               ; function list, for indentation.
    (lambda ()
      (setq-local tab-width 2)
      (setq-local indent-tabs-mode nil)
-     (setq-local indent-line-function 'crowlang--indent-line)))
+     (setq-local indent-line-function 'anura--indent-line)))
   "Major mode for the Crow programming language."
   )
 
-(provide 'crowlang-mode)
-;;; crowlang-mode.el ends here
+(provide 'anura-mode)
+;;; anura-mode.el ends here

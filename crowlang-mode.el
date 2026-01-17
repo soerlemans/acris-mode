@@ -1,11 +1,11 @@
-;;; anura-mode.el --- Major mode for the Crow programming language.
+;;; acris-mode.el --- Major mode for the Crow programming language.
 ;; -*- coding: utf-8; lexical-binding: t -*-
 
 ;; Copyright (C) 2025  soerlemans
 
 ;; Author: soerlemans <https://github.com/soerlemans>
 ;; Keywords: languages crow
-;; URL: https://github.com/soerlemans/anura-mode
+;; URL: https://github.com/soerlemans/acris-mode
 ;;
 ;; This file is not part of GNU Emacs.
 
@@ -39,7 +39,7 @@
 (require 'generic-x)
 
 ;;; Variables:
-(setq anura--comments
+(setq acris--comments
       (list
        "//"
        '("/*" . "*/" )
@@ -47,7 +47,7 @@
       ;; "List of character sequences for detecting comments."
       )
 
-(setq anura--keywords
+(setq acris--keywords
       (list
        ;; Variables:
        "let"
@@ -84,10 +84,10 @@
        "defer"
        "return"
        )
-      ;; "List of keywords for anura."
+      ;; "List of keywords for acris."
       )
 
-(setq anura--font-lock-defaults
+(setq acris--font-lock-defaults
       '(
 				;; Types:
 				("\\<void\\>" . font-lock-type-face)
@@ -160,20 +160,20 @@
 				;; Variable names
 				("\\<[a-zA-Z_][a-zA-Z0-9_]*\\>" . font-lock-variable-name-face)
 				)
-      ;;  "List of font lock settings for anura."
+      ;;  "List of font lock settings for acris."
       )
 
 ;;; Functions:
-(defun anura--calculate-indentation ()
+(defun acris--calculate-indentation ()
   "Return the column to which the current line should be indented."
   (* tab-width (min (car (syntax-ppss (line-beginning-position)))
                     (car (syntax-ppss (line-end-position))))))
 
-(defun anura--indent-line ()
+(defun acris--indent-line ()
   "Indent current line of Crowlang code."
   (interactive)
   (let ((savep (> (current-column) (current-indentation)))
-        (indent (condition-case nil (max (anura--calculate-indentation) 0)
+        (indent (condition-case nil (max (acris--calculate-indentation) 0)
                   (error 0))))
     (if savep
 				(save-excursion (indent-line-to indent))
@@ -181,18 +181,18 @@
     ))
 
 ;;; Define generic mode:
-(define-generic-mode 'anura-mode
-  anura--comments           ; Comments.
-  anura--keywords           ; Keywords.
-  anura--font-lock-defaults ; Font-lock settings.
-  '("\\.cw$")                  ; Activate the mode only for anura source files.
+(define-generic-mode 'acris-mode
+  acris--comments           ; Comments.
+  acris--keywords           ; Keywords.
+  acris--font-lock-defaults ; Font-lock settings.
+  '("\\.cw$")                  ; Activate the mode only for acris source files.
   (list		               ; function list, for indentation.
    (lambda ()
      (setq-local tab-width 2)
      (setq-local indent-tabs-mode nil)
-     (setq-local indent-line-function 'anura--indent-line)))
+     (setq-local indent-line-function 'acris--indent-line)))
   "Major mode for the Crow programming language."
   )
 
-(provide 'anura-mode)
-;;; anura-mode.el ends here
+(provide 'acris-mode)
+;;; acris-mode.el ends here

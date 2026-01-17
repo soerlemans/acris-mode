@@ -1,6 +1,6 @@
 ;; -*- no-byte-compile: t; lexical-binding: nil -*-
-(define-package "anura-mode" "20250114.1853"
+(define-package "acris-mode" "20250114.1853"
   "Major mode for the Crowlang programming language."
   '((emacs "29.4"))
-  :keywords '("languages" "anura")
-  :url "https://github.com/soerlemans/anura-mode")
+  :keywords '("languages" "acris")
+  :url "https://github.com/soerlemans/acris-mode")

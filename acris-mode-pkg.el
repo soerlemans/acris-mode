@@ -1,6 +1,6 @@
 ;; -*- no-byte-compile: t; lexical-binding: nil -*-
 (define-package "acris-mode" "20250114.1853"
-  "Major mode for the Crowlang programming language."
+  "Major mode for the Acris programming language."
   '((emacs "29.4"))
   :keywords '("languages" "acris")
   :url "https://github.com/soerlemans/acris-mode")

@@ -53,6 +53,11 @@
        "let"
        "var"
 
+			 ;; Variable specifiers:
+       "ro"
+       "wo"
+       "rw"
+
        ;; Package:
        ;; TODO: Implement when stable.
        "module"
@@ -60,23 +65,29 @@
        "export"
 
        ;; Control Statements:
+       "slot"
        "func"
        "meth"
        "match"
+       "switch"
        "if"
        "else"
        "elif"
        "loop"
 
-			 ;; Typing:
+			 ;; User Types:
+			 "alias"
 			 "struct"
 			 "self"
 			 "enum"
-			 "interface"
+			 "union"
+			 "proto"
 
 			 ;; Meta:
        "decl"
        "macro"
+       "const"
+       "comp"
 
        ;; Jump:
        "break"
@@ -100,23 +111,23 @@
 				("\\<i16\\>" . font-lock-type-face)
 				("\\<i32\\>" . font-lock-type-face)
 				("\\<i64\\>" . font-lock-type-face)
-				("\\<isize\\>" . font-lock-type-face)
+				("\\<isz\\>" . font-lock-type-face)
 
 				("\\<uint\\>" . font-lock-type-face)
 				("\\<u8\\>" . font-lock-type-face)
 				("\\<u16\\>" . font-lock-type-face)
 				("\\<u32\\>" . font-lock-type-face)
 				("\\<u64\\>" . font-lock-type-face)
-				("\\<usize\\>" . font-lock-type-face)
+				("\\<usz\\>" . font-lock-type-face)
 
-				("\\<string\\>" . font-lock-type-face)
+				("\\<cstr\\>" . font-lock-type-face)
 				("\\<bool\\>" . font-lock-type-face)
 
 				;;
 				("\\<\\(TODO\\|FIXME\\|IMPORTANT\\)" . font-lock-warning-face)
 
 				;; Builin functions:
-				("\\<println\\|print\\>" . font-lock-builtin-face)
+				;; ("\\<println\\|print\\>" . font-lock-builtin-face)
 
 				("^#[a-zA-Z_][a-zA-Z0-9_]*". font-lock-preprocessor-face)
 
@@ -133,7 +144,8 @@
 				;; ("\\[\\[[ \t]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)\\(?:\\s-*(.*?)\\)?\\s-*\\(?:,\\|\\]\\]\\)" 1 font-lock-preprocessor-face)
 
 				;; Constants
-				("\\<\\(True\\|False\\)\\>" . font-lock-constant-face)
+				("\\<\\(true\\|false\\)\\>" . font-lock-constant-face)
+				("\\<\\(null\\)\\>" . font-lock-constant-face)
 
 				("\"\\.\\*\\?" . font-lock-string-face)
 

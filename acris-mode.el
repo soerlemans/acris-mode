@@ -66,10 +66,13 @@
 
        ;; Control Statements:
        "slot"
+       "pure"
        "func"
        "meth"
        "match"
        "switch"
+       "case"
+       "fallthrough"
        "if"
        "else"
        "elif"
@@ -80,8 +83,10 @@
 			 "struct"
 			 "self"
 			 "enum"
+			 "iota"
 			 "union"
 			 "proto"
+			 "to"
 
 			 ;; Meta:
        "decl"
@@ -121,6 +126,7 @@
 				("\\<usz\\>" . font-lock-type-face)
 
 				("\\<cstr\\>" . font-lock-type-face)
+				("\\<char\\>" . font-lock-type-face)
 				("\\<bool\\>" . font-lock-type-face)
 
 				;;
@@ -129,7 +135,8 @@
 				;; Builin functions:
 				;; ("\\<println\\|print\\>" . font-lock-builtin-face)
 
-				("^#[a-zA-Z_][a-zA-Z0-9_]*". font-lock-preprocessor-face)
+				("^#<[a-zA-Z_][a-zA-Z0-9_]*". font-lock-preprocessor-face) ; Unhygienic macros.
+				("^#[a-zA-Z_][a-zA-Z0-9_]*". font-lock-preprocessor-face)  ; Hygienic macros.
 
 				;; TODO: Figure these out:
 				;; ("=" . font-lock-operator)
@@ -144,6 +151,7 @@
 				;; ("\\[\\[[ \t]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)\\(?:\\s-*(.*?)\\)?\\s-*\\(?:,\\|\\]\\]\\)" 1 font-lock-preprocessor-face)
 
 				;; Constants
+				("\\<\\([A-Z_]+\\)\\>" . font-lock-constant-face) ; Constants should be all caps with underscores.
 				("\\<\\(true\\|false\\)\\>" . font-lock-constant-face)
 				("\\<\\(null\\)\\>" . font-lock-constant-face)
 
